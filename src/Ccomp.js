@@ -27,17 +27,11 @@ export default class Ccomp extends Component {
         const input = this.state.input
         if (!input) return 
         event.target.firstChild.value = ''
-        var items = this.state.items
-        
-        items.push({
-            text: this.state.input,
-            state: false
-        })
 
-        this.setState({
-            items: items, 
+        this.setState( state => ({
+            items: [...state.items, { text: this.state.input, state: false }], 
             input: ''
-        })
+        }))
     }
 
     deleteItem(event) {
